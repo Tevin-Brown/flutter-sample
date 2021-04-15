@@ -1,5 +1,6 @@
 import 'package:biome/screens/home.dart';
 import 'package:biome/screens/layout_demo.dart';
+import 'package:biome/screens/simon_says_demo.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutePath {
@@ -25,7 +26,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRoutePath> {
   final GlobalKey<NavigatorState> navigatorKey;
   String _selectedApp;
-  List<String> apps = ['Multipage', 'Layout'];
+  List<String> apps = ['Multipage', 'Layout', 'Simon Says'];
   AppRouterDelegate() : navigatorKey = GlobalKey<NavigatorState>();
 
   AppRoutePath get currentConfiguration {
@@ -44,6 +45,8 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
             child: AppListScreen(apps: apps, onTapped: _handleAppTapped)),
         if (_selectedApp == 'Layout')
           MaterialPage(key: ValueKey(_selectedApp), child: LayoutDemo())
+        else if (_selectedApp == 'Simon Says')
+          MaterialPage(key: ValueKey(_selectedApp), child: SimonSaysDemo())
         else if (_selectedApp != null)
           MaterialPage(
               key: ValueKey(_selectedApp),
