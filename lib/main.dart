@@ -3,9 +3,15 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'navigation.dart';
 
-void main() => runApp(DemoApp());
+void main() {
+  // Ensure that plugin services are initialized so that `availableCameras()`
+  // can be called before `runApp()`
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(DemoApp());
+}
 
 class DemoApp extends StatefulWidget {
   @override
